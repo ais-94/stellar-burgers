@@ -1,9 +1,8 @@
 import { ProfileOrdersUI } from '@ui-pages';
 import { TOrder } from '@utils-types';
 import { FC, useEffect } from 'react';
-//import { useSelector } from 'react-redux';
 import { useDispatch, useSelector } from '../../services/store';
-import { userOrdersSelector, getOrders } from '../../services/slices/userSlice';
+import { userOrdersSelector, getOrdersThunk } from '../../services/slices/userSlice';
 
 export const ProfileOrders: FC = () => {
   /** TODO: взять переменную из стора */
@@ -11,7 +10,7 @@ export const ProfileOrders: FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getOrders());
+    dispatch(getOrdersThunk());
   }, [dispatch]);
 
   return <ProfileOrdersUI orders={orders} />;

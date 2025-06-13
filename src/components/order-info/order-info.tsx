@@ -2,7 +2,6 @@ import { FC, useEffect, useMemo } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
-//import { useDispatch, useSelector } from 'react-redux';
 import { useSelector, useDispatch } from '../../services/store';
 import { fetchOrderByNumber } from '../../services/slices/feedsSlice';
 import { orderSelector } from '../../services/slices/feedsSlice';

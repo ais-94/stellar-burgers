@@ -84,8 +84,8 @@ export const logoutUser = createAsyncThunk('users/logoutUser', async () =>
   })
 );
 
-export const getOrders = createAsyncThunk(
-  'users/getOrders',
+export const getOrdersThunk = createAsyncThunk(
+  'users/getOrdersThunk',
   getOrdersApi
 );
 
@@ -141,14 +141,14 @@ const userSlice = createSlice({
         state.loginUserRequest = false;
         state.isAuthenticated = false;
       })
-      .addCase(getOrders.fulfilled, (state, action) => {
+      .addCase(getOrdersThunk.fulfilled, (state, action) => {
         state.orders = action.payload;
         state.isLoading = false;
       })
-      .addCase(getOrders.pending, (state) => {
+      .addCase(getOrdersThunk.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getOrders.rejected, (state) => {
+      .addCase(getOrdersThunk.rejected, (state) => {
         state.isLoading = false;
       })
       .addCase(getUserThunk.pending, (state) => {

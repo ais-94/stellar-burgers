@@ -26,7 +26,7 @@ export const Login: FC = () => {
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
+    dispatch(clearErrors());
     dispatch(loginUserThunk({ email, password }))
       .then(() => {
         navigate('/');
@@ -41,6 +41,8 @@ export const Login: FC = () => {
     return <Preloader />;
   }
 
+
+
   return (
     <LoginUI
       errorText={error || ''}
@@ -52,3 +54,4 @@ export const Login: FC = () => {
     />
   );
 };
+
