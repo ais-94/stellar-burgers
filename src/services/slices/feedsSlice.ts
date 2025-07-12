@@ -11,7 +11,7 @@ interface IFeedsState {
   error: string | null;
 }
 
-const initialState: IFeedsState = {
+export const initialState: IFeedsState = {
   orders: [],
   order: null,
   total: 0,
