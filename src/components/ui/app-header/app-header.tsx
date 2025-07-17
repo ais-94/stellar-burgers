@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { NavLink , useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 
 import styles from './app-header.module.css';
@@ -20,7 +20,7 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
       <nav className={`${styles.menu} p-4`}>
         <div className={styles.menu_part_left}>
           <>
-            <NavLink 
+            <NavLink
               className={clsx(
                 styles.link,
                 currentLocation === '/'
@@ -38,7 +38,7 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
             </NavLink>
           </>
           <>
-            <NavLink 
+            <NavLink
               className={clsx(
                 styles.link,
                 currentLocation === '/feed'
@@ -54,13 +54,13 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
             </NavLink>
           </>
         </div>
-        <NavLink  className={styles.link} to={'/'}>
+        <NavLink className={styles.link} to={'/'}>
           <div className={styles.logo}>
             <Logo className='' />
           </div>
         </NavLink>
         <div className={styles.link_position_last}>
-          <NavLink 
+          <NavLink
             className={clsx(
               styles.link,
               currentLocation === '/profile'

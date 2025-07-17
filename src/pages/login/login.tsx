@@ -17,11 +17,12 @@ export const Login: FC = () => {
   const navigate = useNavigate();
   const error = useSelector(errorSelector);
 
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       dispatch(clearErrors());
-    };
-  }, [dispatch]);
+    },
+    [dispatch]
+  );
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -41,8 +42,6 @@ export const Login: FC = () => {
     return <Preloader />;
   }
 
-
-
   return (
     <LoginUI
       errorText={error || ''}
@@ -54,4 +53,3 @@ export const Login: FC = () => {
     />
   );
 };
-

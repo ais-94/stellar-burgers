@@ -9,7 +9,6 @@ import {
 } from '../../services/slices/feedsSlice';
 import { useSelector } from '../../services/store';
 
-
 const getOrders = (orders: TOrder[], status: string): number[] =>
   orders
     .filter((item) => item.status === status)
@@ -18,15 +17,15 @@ const getOrders = (orders: TOrder[], status: string): number[] =>
 
 export const FeedInfo: FC = () => {
   /** TODO: взять переменные из стора */
- const orders: TOrder[] = useSelector(ordersSelector);
+  const orders: TOrder[] = useSelector(ordersSelector);
 
- const total = useSelector(selectTotal);
- const totalToday = useSelector(selectTotalToday);
+  const total = useSelector(selectTotal);
+  const totalToday = useSelector(selectTotalToday);
 
- const feed = {
-  total,
-  totalToday
-};
+  const feed = {
+    total,
+    totalToday
+  };
 
   const readyOrders = getOrders(orders, 'done');
 
@@ -40,4 +39,3 @@ export const FeedInfo: FC = () => {
     />
   );
 };
-

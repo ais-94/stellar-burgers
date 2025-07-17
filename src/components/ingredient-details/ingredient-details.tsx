@@ -17,5 +17,3 @@ export const IngredientDetails: FC = () => {
 
   return <IngredientDetailsUI ingredientData={ingredientData} />;
 };
-
- 

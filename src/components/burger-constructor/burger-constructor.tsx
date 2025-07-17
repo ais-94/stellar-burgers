@@ -19,17 +19,16 @@ import { isAuthCheckedSelector } from '../../services/slices/userSlice';
 export const BurgerConstructor: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-    const constructorItems = useSelector(selectConstructor);
+  const constructorItems = useSelector(selectConstructor);
   const orderRequest = useSelector(orderRequestSelector);
   const orderModalData = useSelector(orderSelector);
 
   const LoginAuthenticated = useSelector(isAuthCheckedSelector);
 
-
   const closeOrderModal = () => {
     dispatch(clearConstructor());
     dispatch(clearOrder());
-   
+
     navigate('/', { replace: true });
   };
 
@@ -56,11 +55,8 @@ export const BurgerConstructor: FC = () => {
       bun?._id!
     ];
 
-    
     dispatch(screateOrder(orderData));
   };
-
-  
 
   return (
     <BurgerConstructorUI
