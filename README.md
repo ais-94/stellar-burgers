@@ -17,3 +17,15 @@
 ## Важно:
 
 Для корректной работы запросов к серверу необходимо добавить переменную BURGER_API_URL в окружение. Сама ссылка находится в файле `.env.example`.
+
+5.
+## Команды:
+
+`npm install`
+`npm i webpack --save-dev`
+`npm i webpack-cli -D`
+`npm install react react-dom`
+`npm install -D @types/node @types/react @types/react-dom`
+`npm install -D typescript ts-loader`
+`npm i webpack-dev-server@4.15.1 -D`
+`npx webpack --config webpack.config.js --mode=production`
