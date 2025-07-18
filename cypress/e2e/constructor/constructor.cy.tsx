@@ -4,14 +4,14 @@ const bunId = '[data-cy=643d69a5c3f7b9001cfa093c]';
 const bunName = 'Краторная булка N-200i';
 const mainId = '[data-cy=643d69a5c3f7b9001cfa0941]';
 const sauceId = '[data-cy=643d69a5c3f7b9001cfa0943]';
-const baseurl = 'http://localhost:4000';
+const mainName = 'Биокотлета из марсианской Магнолии';
+const sauseName = 'Соус фирменный Space Sauce';
 
 describe('Работа конструктора', function () {
   beforeEach(function () {
-    cy.intercept('GET', 'api/ingredients', 
-      { fixture: 'ingredients.json' });
+    cy.intercept('GET', 'api/ingredients', { fixture: 'ingredients.json' });
     cy.viewport(1920, 784);
-    cy.visit(baseurl);
+    cy.visit('/');
   });
 
   it('Добавление булок в конструктор', () => {
@@ -21,10 +21,16 @@ describe('Работа конструктора', function () {
   });
 
   it('Добавление ингредиентов в конструктор', () => {
-    cy.get(mainId).contains('Добавить').click();
-    cy.get(sauceId).contains('Добавить').click();
     cy.get(mainId).should('exist');
     cy.get(sauceId).should('exist');
+    cy.get(mainId).contains('Добавить').click();
+    cy.get(sauceId).contains('Добавить').click();
+    cy.get('[data-cy=constructor-ingredients-list]')
+      .contains(mainName)
+      .should('exist');
+    cy.get('[data-cy=constructor-ingredients-list]')
+      .contains(sauseName)
+      .should('exist');
   });
 });
 
@@ -32,7 +38,7 @@ describe('Работа модального окна', function () {
   beforeEach(function () {
     cy.intercept('GET', 'api/ingredients', { fixture: 'ingredients' });
     cy.viewport(1920, 784);
-    cy.visit(baseurl);
+    cy.visit('/');
   });
 
   it('Открыть модальное окно ингредиента', () => {
@@ -71,7 +77,7 @@ describe('Сбор и создание заказа', function () {
     );
     cy.setCookie('accessToken', 'test-accessToken');
     cy.viewport(1920, 784);
-    cy.visit(baseurl);
+    cy.visit('/');
   });
 
   afterEach(function () {
@@ -102,13 +108,14 @@ describe('Сбор и создание заказа', function () {
     cy.get('@ordersNumber').should('not.exist');
   });
 
-  it('Проверка конструктора без ингредиентов', () => {
+  it('Проверка проверка отсутвия ингрeдиентов после заказа', () => {
     cy.get('[data-cy=bun-top]').should('not.exist');
     cy.get('[data-cy=bun-bottom]').should('not.exist');
+    cy.get(mainId).should('not.exist');
+    cy.get(sauceId).should('not.exist');
   });
 
   it('Создать заказ без ингредиентов', () => {
-    cy.get('[data-cy=place-an-order]')
-    .should('not.exist');
+    cy.get('[data-cy=place-an-order]').should('not.exist');
   });
 });
